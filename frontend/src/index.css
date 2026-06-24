@@ -1,19 +1,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  background: var(--bg, #2d3e2c);
-  color: var(--text, #e4fd97);
-}
-
+body { font-family: 'Inter', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; background: var(--bg); color: var(--text); }
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
-
-input::placeholder { color: rgba(255,255,255,0.3); }
-textarea::placeholder { color: rgba(255,255,255,0.3); }
-
-button { font-family: inherit; }
-input, textarea { font-family: inherit; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 4px; }
+input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
+button, input, textarea { font-family: inherit; }

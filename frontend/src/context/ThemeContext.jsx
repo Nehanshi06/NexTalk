@@ -1,105 +1,71 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 
-const themes = {
+export const themes = {
   limeSprout: {
-    name: 'Lime Sprout',
-    accent: '#e4fd97',
-    accentDark: '#c8e870',
-    bg: '#2d3e2c',
-    bgSecondary: '#3a4f38',
-    bgTertiary: '#1e2e1d',
-    text: '#e4fd97',
-    textSecondary: '#a8c4a6',
-    textMuted: '#6b8a69',
-    bubble: '#e4fd97',
-    bubbleText: '#2d3e2c',
-    otherBubble: '#3a4f38',
-    otherBubbleText: '#e4fd97',
-    border: '#3a4f38',
-    inputBg: '#1e2e1d',
+    name: 'Lime Sprout', emoji: '🌿',
+    accent: '#e4fd97', accentDark: '#c5e070', accentRgb: '228,253,151',
+    bg: '#2d3e2c', bgSecondary: '#385036', bgTertiary: '#223321', bgCard: '#3a5238',
+    text: '#f0ffe0', textSecondary: '#b8d4a8', textMuted: '#7a9e70',
+    bubble: '#e4fd97', bubbleText: '#1a2e19',
+    otherBubble: '#3a5238', otherBubbleText: '#f0ffe0',
+    border: 'rgba(228,253,151,0.12)', inputBg: '#223321',
+    storyRing: 'linear-gradient(45deg, #e4fd97, #7ec850)',
   },
   midnight: {
-    name: 'Midnight Blue',
-    accent: '#7c8ff7',
-    accentDark: '#5a6fe0',
-    bg: '#0d0f1a',
-    bgSecondary: '#161929',
-    bgTertiary: '#0a0c14',
-    text: '#e8eaff',
-    textSecondary: '#8b8fa8',
-    textMuted: '#4a4d66',
-    bubble: '#7c8ff7',
-    bubbleText: '#ffffff',
-    otherBubble: '#1e2138',
-    otherBubbleText: '#e8eaff',
-    border: '#1e2138',
-    inputBg: '#0a0c14',
+    name: 'Midnight', emoji: '🌙',
+    accent: '#818cf8', accentDark: '#6366f1', accentRgb: '129,140,248',
+    bg: '#0f0f1a', bgSecondary: '#1a1a2e', bgTertiary: '#0a0a14', bgCard: '#1e1e35',
+    text: '#e8e8ff', textSecondary: '#9090c0', textMuted: '#505080',
+    bubble: '#818cf8', bubbleText: '#ffffff',
+    otherBubble: '#1e1e35', otherBubbleText: '#e8e8ff',
+    border: 'rgba(129,140,248,0.12)', inputBg: '#0a0a14',
+    storyRing: 'linear-gradient(45deg, #818cf8, #c084fc)',
   },
   roseGold: {
-    name: 'Rose Gold',
-    accent: '#f4a7b9',
-    accentDark: '#e07d9a',
-    bg: '#1a0d12',
-    bgSecondary: '#2a1520',
-    bgTertiary: '#110809',
-    text: '#fde8ed',
-    textSecondary: '#c4858f',
-    textMuted: '#7a4550',
-    bubble: '#f4a7b9',
-    bubbleText: '#1a0d12',
-    otherBubble: '#2a1520',
-    otherBubbleText: '#fde8ed',
-    border: '#2a1520',
-    inputBg: '#110809',
+    name: 'Rose Gold', emoji: '🌸',
+    accent: '#f9a8d4', accentDark: '#ec4899', accentRgb: '249,168,212',
+    bg: '#1a0a14', bgSecondary: '#2a1020', bgTertiary: '#120709', bgCard: '#30152a',
+    text: '#ffe4f0', textSecondary: '#c490a8', textMuted: '#7a4060',
+    bubble: '#f9a8d4', bubbleText: '#1a0a14',
+    otherBubble: '#30152a', otherBubbleText: '#ffe4f0',
+    border: 'rgba(249,168,212,0.12)', inputBg: '#120709',
+    storyRing: 'linear-gradient(45deg, #f9a8d4, #fb7185)',
   },
   ocean: {
-    name: 'Ocean',
-    accent: '#64d8f0',
-    accentDark: '#3ab8d4',
-    bg: '#050f1a',
-    bgSecondary: '#0d1e2e',
-    bgTertiary: '#030c14',
-    text: '#d0f4ff',
-    textSecondary: '#6a9fb5',
-    textMuted: '#2e5a72',
-    bubble: '#64d8f0',
-    bubbleText: '#050f1a',
-    otherBubble: '#0d1e2e',
-    otherBubbleText: '#d0f4ff',
-    border: '#0d1e2e',
-    inputBg: '#030c14',
+    name: 'Ocean', emoji: '🌊',
+    accent: '#38bdf8', accentDark: '#0ea5e9', accentRgb: '56,189,248',
+    bg: '#030f1a', bgSecondary: '#0a1f30', bgTertiary: '#020c14', bgCard: '#0e2840',
+    text: '#e0f4ff', textSecondary: '#6aabcc', textMuted: '#2e6080',
+    bubble: '#38bdf8', bubbleText: '#030f1a',
+    otherBubble: '#0e2840', otherBubbleText: '#e0f4ff',
+    border: 'rgba(56,189,248,0.12)', inputBg: '#020c14',
+    storyRing: 'linear-gradient(45deg, #38bdf8, #818cf8)',
   },
   ember: {
-    name: 'Ember',
-    accent: '#ff8c42',
-    accentDark: '#e06820',
-    bg: '#150a00',
-    bgSecondary: '#261500',
-    bgTertiary: '#0e0700',
-    text: '#ffe8cc',
-    textSecondary: '#c47a40',
-    textMuted: '#7a4010',
-    bubble: '#ff8c42',
-    bubbleText: '#150a00',
-    otherBubble: '#261500',
-    otherBubbleText: '#ffe8cc',
-    border: '#261500',
-    inputBg: '#0e0700',
+    name: 'Ember', emoji: '🔥',
+    accent: '#fb923c', accentDark: '#ea580c', accentRgb: '251,146,60',
+    bg: '#1a0800', bgSecondary: '#2a1200', bgTertiary: '#120500', bgCard: '#301800',
+    text: '#fff0e0', textSecondary: '#c47840', textMuted: '#7a3800',
+    bubble: '#fb923c', bubbleText: '#1a0800',
+    otherBubble: '#301800', otherBubbleText: '#fff0e0',
+    border: 'rgba(251,146,60,0.12)', inputBg: '#120500',
+    storyRing: 'linear-gradient(45deg, #fb923c, #f43f5e)',
   },
 };
 
 const ThemeContext = createContext(null);
 
 export const ThemeProvider = ({ children }) => {
-  const [themeName, setThemeName] = useState(() => localStorage.getItem('ntTheme') || 'limeSprout');
+  const [themeName, setThemeName] = useState(() => localStorage.getItem('nt_theme') || 'limeSprout');
   const theme = themes[themeName] || themes.limeSprout;
 
   useEffect(() => {
-    localStorage.setItem('ntTheme', themeName);
-    const root = document.documentElement;
-    Object.entries(theme).forEach(([key, val]) => {
-      if (typeof val === 'string') root.style.setProperty(`--${key}`, val);
+    localStorage.setItem('nt_theme', themeName);
+    const r = document.documentElement;
+    Object.entries(theme).forEach(([k, v]) => {
+      if (typeof v === 'string') r.style.setProperty(`--${k}`, v);
     });
+    r.style.setProperty('--bg', theme.bg);
   }, [themeName, theme]);
 
   return (

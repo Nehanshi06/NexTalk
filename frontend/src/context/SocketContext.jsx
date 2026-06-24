@@ -11,22 +11,12 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (!user) return;
-
-    const socket = io('http://localhost:5000', { autoConnect: true });
+    const socket = io('http://localhost:5000');
     socketRef.current = socket;
-
-    socket.on('connect', () => {
-      socket.emit('user-online', user._id);
-    });
-
-    socket.on('presence-update', ({ userId, isOnline }) => {
-      setOnlineUsers(prev => ({ ...prev, [userId]: isOnline }));
-    });
-
-    return () => {
-      socket.disconnect();
-      socketRef.current = null;
-    };
+    socket.on('connect', () => socket.emit('user-online', user._id));
+    socket.on('presence-update', ({ userId, isOnline }) =>
+      setOnlineUsers(p => ({ ...p, [userId]: isOnline })));
+    return () => { socket.disconnect(); socketRef.current = null; };
   }, [user]);
 
   return (

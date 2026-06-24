@@ -2,10 +2,7 @@
   "name": "nextalk-backend",
   "version": "1.0.0",
   "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
+  "scripts": { "start": "node server.js", "dev": "nodemon server.js" },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -16,7 +13,5 @@
     "multer": "^1.4.5-lts.1",
     "socket.io": "^4.7.1"
   },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  }
+  "devDependencies": { "nodemon": "^3.0.1" }
 }
